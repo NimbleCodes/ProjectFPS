@@ -3,26 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PistolBullet : MonoBehaviour
-{    
+{
     Rigidbody _rig;
-    float _speed,_x,_y,_z;
+    float _speed;
+
+    float _damage = 10f;
     private void Start()
     {
         _rig = GetComponent<Rigidbody>();
     }
-    public void Init(float rotationX, float rotationY,float rotationZ ,float speed)
-    {
-        _speed = speed;
-        _x = rotationX;
-        _y = rotationY;
-        _z = rotationZ;
-        Destroy(gameObject, 2f);                    
-    }
-
 
     private void Update()
     {
-        _rig.AddForce(new Vector3(_x,_y,_z).normalized * _speed);
+        _rig.AddForce(transform.forward * _speed);
     }
-    
+    public float getDamage(){
+        return _damage;
+    }
+    public void Init(float speed)
+    {
+        this._speed = speed;
+        Destroy(gameObject, 1.3f);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }

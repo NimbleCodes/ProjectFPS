@@ -25,9 +25,10 @@ public class CameraFlow : MonoBehaviour
         _rotationY += _mouseX;
 
         _rotationX -= _mouseY;
-        _rotationX = Mathf.Clamp(_rotationX, -90f, 90f); //위 아래 90도 고정
+        _rotationX = Mathf.Clamp(_rotationX, -90f, 90f); //fix Y Pos to 90 degrees 
 
-        // rotation of cam and orientation
+        // rotation of cam and player
+        //Euler : returns rotation
         transform.rotation = Quaternion.Euler(_rotationX, _rotationY, 0);
         _playerDir.rotation = Quaternion.Euler(0, _rotationY, 0);
     }
