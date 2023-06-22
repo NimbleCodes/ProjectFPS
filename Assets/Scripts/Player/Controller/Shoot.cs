@@ -12,7 +12,7 @@ public class Shoot : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         { 
             Bullet = Instantiate(_bulletPrefab,_shootPoint.position,transform.rotation);
-            Bullet.GetComponent<PistolBullet>().Init(50);
+            Bullet.GetComponent<PistolBullet>().Init(400);
            
         }
     }

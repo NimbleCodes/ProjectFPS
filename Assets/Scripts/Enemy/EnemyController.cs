@@ -17,14 +17,14 @@ public class EnemyController : MonoBehaviour
 
     //Attack
     float _attackDelay = 0.5f;
-    bool _isAttacked;
+   public bool _isAttacked;
 
-    //states
+    //Enemy State
     float _sightRange = 20f, _attackRange= 12f;
-    bool _isInSight, _isInAttackRange;
+    public bool _isInSight, _isInAttackRange;
     
     Rigidbody _rig;
-    public float _dealtDamage;
+    public float _dealtDamage =0;
     
     
     private void Start()
@@ -74,10 +74,8 @@ public class EnemyController : MonoBehaviour
         transform.LookAt(_player);
 
         if(_isAttacked == false){
-            Rigidbody rb = Instantiate(_enemyBullet, transform.position,Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 30f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-
+            GameObject bullet = Instantiate(_enemyBullet, transform.position,transform.rotation);
+            bullet.GetComponent<Bomb>().Init(150);
             _isAttacked =true;
             Invoke(nameof(ResetAttack), _attackDelay);
         }
@@ -94,13 +92,4 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, _sightRange);
     }
 
-
-    void OnCollisionEnter(Collision other)
-    {
-        if(other.collider.CompareTag("PlayerBullet")){
-            GameObject bullet = other.gameObject;
-            _dealtDamage = bullet.GetComponent<PistolBullet>().getDamage();
-            gameObject.GetComponent<HealthManager>().MinusHealth(_dealtDamage);
-        }
-    }
 }
