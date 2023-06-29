@@ -11,12 +11,14 @@ public class Bomb : MonoBehaviour
     private void Start()
     {
         _rig = GetComponent<Rigidbody>();
+        _rig.AddForce(transform.forward * 15f, ForceMode.Impulse);
+        _rig.AddForce(transform.up * 5f, ForceMode.Impulse);
     }
-    void FixedUpdate()
-    {
-        _rig.AddForce(transform.forward * 30f);
-        _rig.AddForce(transform.up * 15f);
-    }
+    //void FixedUpdate()
+    //{
+    //    _rig.AddForce(transform.forward * 5f, ForceMode.Impulse);
+    //    _rig.AddForce(transform.up * 5f, ForceMode.Impulse);
+    //}
     public void Init(float speed)
     {
         this._speed = speed;

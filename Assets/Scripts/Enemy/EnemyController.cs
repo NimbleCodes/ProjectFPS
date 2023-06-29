@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] float _health;
-    
+    [SerializeField] Transform _shootPoint;
     [SerializeField] Transform _player;
     [SerializeField] LayerMask _LGround, _LPlayer;
     [SerializeField] GameObject _enemyBullet;
@@ -72,9 +72,10 @@ public class EnemyController : MonoBehaviour
     void Attack(){
         _nav.SetDestination(transform.position);
         transform.LookAt(_player);
+        _shootPoint.LookAt(_player);
 
         if(_isAttacked == false){
-            GameObject bullet = Instantiate(_enemyBullet, transform.position,transform.rotation);
+            GameObject bullet = Instantiate(_enemyBullet, _shootPoint.transform.position,transform.rotation);
             bullet.GetComponent<Bomb>().Init(150);
             _isAttacked =true;
             Invoke(nameof(ResetAttack), _attackDelay);
