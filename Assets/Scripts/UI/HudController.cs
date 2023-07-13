@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class HudController : MonoBehaviour
 {
+    [SerializeField] GameObject _weaponRing;
     private static HudController instance;
-    GameObject _weaponRing = null;
+    
     public GameObject weponRing{get {return _weaponRing;}}
     void Awake()
     {
@@ -16,6 +17,10 @@ public class HudController : MonoBehaviour
             Destroy(gameObject);
         }
         
+    }
+
+    private void Start() {
+        _weaponRing = GameObject.FindGameObjectWithTag("WeaponRing");
     }
 
     public static HudController Instance{
