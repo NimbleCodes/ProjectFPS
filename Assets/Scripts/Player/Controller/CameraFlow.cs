@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class CameraFlow : MonoBehaviour
+public class CameraFlow : GenericSingleton<CameraFlow>
 {
     float _senceX, _senceY;
     float _rotationX, _rotationY;

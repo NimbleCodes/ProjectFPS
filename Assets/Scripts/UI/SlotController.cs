@@ -12,7 +12,7 @@ public class SlotController : MonoBehaviour
 
     ItemSlot _currSlot;
     ItemSlot _prevSlot;
-
+    
     private void Update() {
         _mousePosNormal = new Vector2(Input.mousePosition.x - Screen.width/2.5f, Input.mousePosition.y - Screen.width/2.5f);
         _currAngle = Mathf.Atan2(_mousePosNormal.y, _mousePosNormal.x) * Mathf.Rad2Deg;
