@@ -8,7 +8,7 @@ public class ItemSlot : MonoBehaviour
     [SerializeField] Color _hoverColor;
     [SerializeField] Color _baseColor;
     [SerializeField] Image _backGround;
-
+    [SerializeField] Image _weaponImg;
     private void Start() {
         _backGround.color = _baseColor;
     }
@@ -19,5 +19,9 @@ public class ItemSlot : MonoBehaviour
 
     public void Deselect(){
         _backGround.color = _baseColor;
+    }
+
+    public string getWeaponName(){
+        return _weaponImg.name;
     }
 }

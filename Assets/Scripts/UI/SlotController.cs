@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class SlotController : MonoBehaviour
 {
     [SerializeField]  GameObject[] _slots;
@@ -26,6 +26,10 @@ public class SlotController : MonoBehaviour
 
             _currSlot = _slots[_selected].GetComponent<ItemSlot>();
             _currSlot.Select();
+        }
+
+        if(Input.GetMouseButtonDown(0)){
+            string weaponName = _currSlot.getWeaponName();
         }
     }
 }

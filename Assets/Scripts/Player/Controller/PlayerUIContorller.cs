@@ -6,7 +6,7 @@ public class PlayerUIContorller : GenericSingleton<PlayerUIContorller>
 {
     GameObject _weaponRing = null, _camController = null;
     bool _isRingActive = false;
-    float slowLength =4;
+    
     void FixedUpdate(){
         if(_weaponRing == null && _camController == null){
             _weaponRing = HudController.Instance.weponRing;
