@@ -20,15 +20,9 @@ public class PlayerUIContorller : GenericSingleton<PlayerUIContorller>
     {
         if(Input.GetKeyDown(KeyCode.Tab)){
             if(!_isRingActive){
-                _weaponRing.SetActive(true);
-                _isRingActive = true;
-                _camController.GetComponent<CameraFlow>().enabled = false;
-                Cursor.lockState = CursorLockMode.None;
+                showWeaponRing();
             }else if(_isRingActive){
-                _weaponRing.SetActive(false);
-                _isRingActive = false;
-                _camController.GetComponent<CameraFlow>().enabled = true;
-                Cursor.lockState = CursorLockMode.Locked;
+                closeWeaponRing();
             }
         }
 
@@ -45,4 +39,20 @@ public class PlayerUIContorller : GenericSingleton<PlayerUIContorller>
         Time.timeScale = 1f;
         Time.fixedDeltaTime = Time.timeScale * 0.02f;
     }
+
+    void showWeaponRing(){
+        _weaponRing.SetActive(true);
+        _isRingActive = true;
+        _camController.GetComponent<CameraFlow>().enabled = false;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void closeWeaponRing(){
+        _weaponRing.SetActive(false);
+        _isRingActive = false;
+        _camController.GetComponent<CameraFlow>().enabled = true;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    
 }

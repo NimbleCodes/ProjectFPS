@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class SlotController : MonoBehaviour
 {
-    [SerializeField]  GameObject[] _slots;
+    [SerializeField] GameObject[] _Guns;
+    [SerializeField] GameObject[] _slots;
     public Vector2 _mousePosNormal;
     public float _currAngle;
     public int _selected;
@@ -12,6 +13,16 @@ public class SlotController : MonoBehaviour
 
     ItemSlot _currSlot;
     ItemSlot _prevSlot;
+    GameObject _player = null;
+    void Start()
+    {
+       _player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    void FixedUpdate()
+    {
+        if(_player == null) _player = GameObject.FindGameObjectWithTag("Player");
+    }
     
     private void Update() {
         _mousePosNormal = new Vector2(Input.mousePosition.x - Screen.width/2.5f, Input.mousePosition.y - Screen.width/2.5f);
@@ -29,7 +40,16 @@ public class SlotController : MonoBehaviour
         }
 
         if(Input.GetMouseButtonDown(0)){
-            string weaponName = _currSlot.getWeaponName();
+            ChangeGun();
+            _player.GetComponent<PlayerUIContorller>().closeWeaponRing();
         }
+    }
+
+    void ChangeGun(){
+        foreach(GameObject gun in _Guns){
+            gun.SetActive(false);
+        }
+
+        _Guns[_selected].SetActive(true);
     }
 }

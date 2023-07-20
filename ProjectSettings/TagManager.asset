@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - EnemyBullet
   - WeaponRing
+  - Weapon
   layers:
   - Default
   - TransparentFX
