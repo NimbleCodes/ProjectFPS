@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
@@ -17,14 +18,14 @@ public class EnemyController : MonoBehaviour
 
     //Attack
     float _attackDelay = 0.5f;
-   public bool _isAttacked;
+    bool _isAttacked;
 
     //Enemy State
     float _sightRange = 20f, _attackRange= 12f;
-    public bool _isInSight, _isInAttackRange;
-    
+    bool _isInSight, _isInAttackRange,_isDead = false;
+    public bool IsDead {get{return _isDead;} set{_isDead = value;}}
     Rigidbody _rig;
-    public float _dealtDamage =0;
+    float _dealtDamage =0;
     
     
     private void Start()
@@ -35,6 +36,7 @@ public class EnemyController : MonoBehaviour
     }
 
     private void Update() {
+        if(_isDead) Destroy(gameObject);
         _isInSight = Physics.CheckSphere(transform.position, _sightRange, _LPlayer);
         _isInAttackRange = Physics.CheckSphere(transform.position, _attackRange,_LPlayer);
 

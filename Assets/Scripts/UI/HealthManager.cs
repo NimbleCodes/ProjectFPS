@@ -27,5 +27,17 @@ public class HealthManager : MonoBehaviour
 
     void UpdateHealth(){
         HealthBar.value = currentHealth;
+        if(HealthBar.value <= 0){
+            checkDeath();
+        }
+    }
+
+    void checkDeath(){
+        if(gameObject.CompareTag("Enemy")){
+            GetComponent<EnemyController>().IsDead = true;
+        }
+        if(gameObject.CompareTag("Player")){
+
+        }
     }
 }
