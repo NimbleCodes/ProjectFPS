@@ -484,6 +484,8 @@ GameObject:
   - component: {fileID: 763243357194891746}
   - component: {fileID: 5360768726451231851}
   - component: {fileID: 9060118640714004427}
+  - component: {fileID: 7803265223530936708}
+  - component: {fileID: 465567561133902248}
   m_Layer: 0
   m_Name: Sunguri 1
   m_TagString: Untagged
@@ -596,6 +598,42 @@ MonoBehaviour:
     m_Bits: 128
   _enemyBullet: {fileID: 7163104057520424512, guid: 1365bf3ec8234a141885638b7e43c187, type: 3}
   _patrolPoint: {x: 0, y: 0, z: 0}
+--- !u!114 &7803265223530936708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9060118640714004425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af626c1f711e31340991eaea6ad0cfb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthBar: {fileID: 5436182046409907603}
+  currentHealth: 100
+--- !u!195 &465567561133902248
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9060118640714004425}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &4114017919430935118
 PrefabInstance:
   m_ObjectHideFlags: 0

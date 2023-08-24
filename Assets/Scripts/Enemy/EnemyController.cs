@@ -33,6 +33,7 @@ public class EnemyController : MonoBehaviour
         _rig = GetComponent<Rigidbody>();
         gameObject.GetComponent<HealthManager>().SetHealth(_health);
         _nav = GetComponent<NavMeshAgent>();
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update() {
