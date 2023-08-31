@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
 public class SlotController : MonoBehaviour
 {
     [SerializeField] GameObject[] _Guns;
@@ -17,6 +15,9 @@ public class SlotController : MonoBehaviour
     void Start()
     {
        _player = GameObject.FindGameObjectWithTag("Player");
+       for(int i =1; i < _Guns.Length;i++){
+        _Guns[i].SetActive(false);
+       }
     }
 
     void FixedUpdate()

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
+
 
 public class Shoot : MonoBehaviour
 {
@@ -9,21 +9,43 @@ public class Shoot : MonoBehaviour
     [SerializeField] GameObject _bulletPrefab;
     [SerializeField] Transform _aimPoint;
     [SerializeField] Transform _gunholder;
+    [SerializeField] GunType _gunType;
     GameObject Bullet;
-    bool _isAmmoEmpty;
+    public bool _isAmmoEmpty;
+    GameObject _ammoChecker;
+
+    void Awake()
+    {
+        _ammoChecker = GameObject.Find("AmmoChecker");
+    }
+
     void Update()
     {
-
+        if(_gunType == GunType.Pistol){
+            _isAmmoEmpty = _ammoChecker.GetComponent<AmmoChecker>()._isPistolEmpty;
+        }else if(_gunType == GunType.AssultRifle){
+            _isAmmoEmpty = _ammoChecker.GetComponent<AmmoChecker>()._isAssultREmpty;
+        }  
+        
         _shootPoint.LookAt(_aimPoint);
         if (Input.GetMouseButtonDown(0))
-        {
-            _isAmmoEmpty = gameObject.GetComponent<AmmoHolder>().AmmoStatus; 
-            if(!_isAmmoEmpty){
+        { 
+            if(_isAmmoEmpty == false){
                 Bullet = Instantiate(_bulletPrefab,_shootPoint.position,_gunholder.transform.rotation);
                 Bullet.GetComponent<PistolBullet>().Init(400);
 
-                gameObject.GetComponent<AmmoHolder>().SubAmmo();
+                if(_gunType == GunType.Pistol){
+                    _ammoChecker.GetComponent<AmmoChecker>().SubPistolAmmo();
+                }else if(_gunType == GunType.AssultRifle){
+                    _ammoChecker.GetComponent<AmmoChecker>().SubAssultRAmmo();
+                }
+                
             }
         }
     }
+}
+
+public enum GunType{
+    Pistol,
+    AssultRifle,
 }

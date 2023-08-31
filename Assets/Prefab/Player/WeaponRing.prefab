@@ -48,6 +48,7 @@ MonoBehaviour:
   _hoverColor: {r: 1, g: 1, b: 1, a: 0.7294118}
   _baseColor: {r: 0, g: 0, b: 0, a: 0.78431374}
   _backGround: {fileID: 7363437104459853987}
+  _weaponImg: {fileID: 0}
 --- !u!1 &7363437104419176733
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d629cff9ac5c7540b4404fd07af3f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Guns: []
   _slots:
   - {fileID: 7363437106422289637}
   - {fileID: 7363437104385982812}
@@ -154,7 +156,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 16}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7363437104459853984
 CanvasRenderer:
@@ -242,6 +244,7 @@ MonoBehaviour:
   _hoverColor: {r: 1, g: 1, b: 1, a: 0.8156863}
   _baseColor: {r: 0, g: 0, b: 0, a: 0.78431374}
   _backGround: {fileID: 7363437104956968426}
+  _weaponImg: {fileID: 0}
 --- !u!1 &7363437104956968404
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +281,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 16, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7363437104956968427
 CanvasRenderer:
@@ -354,7 +357,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7363437105121093665
 CanvasRenderer:
@@ -430,7 +433,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1, y: 1}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7363437105532603862
 CanvasRenderer:
@@ -518,6 +521,7 @@ MonoBehaviour:
   _hoverColor: {r: 1, g: 1, b: 1, a: 0.8}
   _baseColor: {r: 0, g: 0, b: 0, a: 0.78431374}
   _backGround: {fileID: 7363437105121093664}
+  _weaponImg: {fileID: 0}
 --- !u!1 &7363437106422289637
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,3 +575,4 @@ MonoBehaviour:
   _hoverColor: {r: 1, g: 1, b: 1, a: 0.80784315}
   _baseColor: {r: 0, g: 0, b: 0, a: 0.78431374}
   _backGround: {fileID: 7363437105532603857}
+  _weaponImg: {fileID: 0}

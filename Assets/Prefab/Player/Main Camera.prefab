@@ -279,21 +279,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 117070, guid: 38075ff1c3cff91428ade499a59bdc97, type: 3}
   m_PrefabInstance: {fileID: 6520290580937806114}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6520290580937806117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6520290580937726060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c96332e5c2756cb4aaec8673cb309443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ammoInfo: {fileID: 0}
-  _curAmmo: 12
-  _maxAmmo: 60
 --- !u!114 &6520290580937806118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,6 +295,7 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 7163104057520424512, guid: 5c288e43a632fe34085fac59245214ff, type: 3}
   _aimPoint: {fileID: 0}
   _gunholder: {fileID: 6520290581353658117}
+  _gunType: 0
 --- !u!1001 &6520290581305196494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -401,18 +387,4 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 7163104057520424512, guid: 5c288e43a632fe34085fac59245214ff, type: 3}
   _aimPoint: {fileID: 0}
   _gunholder: {fileID: 6520290581353658117}
---- !u!114 &6520290581611633769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6520290581305143828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c96332e5c2756cb4aaec8673cb309443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ammoInfo: {fileID: 0}
-  _curAmmo: 30
-  _maxAmmo: 120
+  _gunType: 1

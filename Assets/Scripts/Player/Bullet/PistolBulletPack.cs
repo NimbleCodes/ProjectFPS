@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AssultBulletPack : MonoBehaviour
+public class PistolBulletPack : MonoBehaviour
 {
-    int Ammo = 30;
+    int Ammo = 24;
 
     void OnTriggerEnter(Collider other)
     {
         GameObject AmmoChecker = GameObject.Find("AmmoChecker");
-        AmmoChecker.GetComponent<AmmoChecker>().AddAssultRAmmo(Ammo);
+        AmmoChecker.GetComponent<AmmoChecker>().AddPistolAmmo(Ammo);
     }
+
 }
-
-
