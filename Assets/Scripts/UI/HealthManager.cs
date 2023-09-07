@@ -5,8 +5,7 @@ using UnityEngine.UI;
 public class HealthManager : MonoBehaviour
 {
     [SerializeField] private Slider HealthBar;
-    public float currentHealth;
-    public static HealthManager instance;
+    float currentHealth;
     private void Update()
     {
         UpdateHealth();
@@ -25,12 +24,18 @@ public class HealthManager : MonoBehaviour
         currentHealth = HealthBar.value;
     }
 
+    public float GetHealth(){
+        return currentHealth;
+    }
+
     void UpdateHealth(){
         HealthBar.value = currentHealth;
         if(HealthBar.value <= 0){
             checkDeath();
         }
     }
+
+
 
     void checkDeath(){
         if(gameObject.CompareTag("Enemy")){
