@@ -1918,7 +1918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2027270719228595421, guid: fc9dff8a6dba37740b0d16fea2d8e7b0, type: 3}
       propertyPath: dashForce
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2027270719228595421, guid: fc9dff8a6dba37740b0d16fea2d8e7b0, type: 3}
       propertyPath: dashUpForce

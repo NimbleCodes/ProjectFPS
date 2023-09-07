@@ -69,6 +69,7 @@ public class Movement : MonoBehaviour
             _dashCdslider.value -= 1f;
             _maxSpeed = 30;
             _rig.useGravity = false;
+            _rig.drag =0;
             Vector3 forceToApply = _direction.normalized * dashForce + transform.up * dashUpForce;
             _rig.AddForce(forceToApply, ForceMode.Impulse);
 
@@ -102,6 +103,7 @@ public class Movement : MonoBehaviour
     void ResetDash(){
         _isDash = false;
         _rig.useGravity = true;
+        _rig.drag = _drag;
     }
     void LimitSpeed(){
         Vector3 flatValue = new Vector3(_rig.velocity.x, 0f, _rig.velocity.z);
