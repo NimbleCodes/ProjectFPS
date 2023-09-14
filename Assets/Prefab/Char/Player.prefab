@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &442607649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 442607650}
+  m_Layer: 7
+  m_Name: Orientation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &442607650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442607649}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.489, z: 0.47}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4532731077506781862}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &739480724323765452
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,7 +208,7 @@ BoxCollider:
   m_GameObject: {fileID: 1337819459022166813}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -274,7 +305,7 @@ BoxCollider:
   m_GameObject: {fileID: 6244699564736672017}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -313,6 +344,7 @@ Transform:
   - {fileID: 374146328612772659}
   - {fileID: 4532731077335454347}
   - {fileID: 2731330647197409689}
+  - {fileID: 442607650}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -328,12 +360,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25ee947ae7fcc85479805a4f221fff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dashCdslider: {fileID: 0}
+  _maxSpeed: 7
   _speed: 7
   _playerdir: {fileID: 4532731077506781862}
   _drag: 5
   Ground:
     serializedVersion: 2
     m_Bits: 64
+  dashForce: 50
+  dashUpForce: 0.5
+  text: {fileID: 0}
+  _isOnGround: 0
+  _isDash: 0
+  _isDashOnCd: 0
+  _turnMomentum: 0
 --- !u!54 &703980094406653424
 Rigidbody:
   m_ObjectHideFlags: 0
