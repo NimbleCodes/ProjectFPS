@@ -313,7 +313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024167c04a5871645adebc23aa8391de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
   _shootPoint: {fileID: 2759996732592780979}
   _player: {fileID: 0}
   _LGround:
@@ -359,7 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 5963810467224809223}
-  currentHealth: 0
+  _maxHealth: 100
 --- !u!1 &2759996732266467918
 GameObject:
   m_ObjectHideFlags: 0

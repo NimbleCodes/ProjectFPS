@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 8572268571233585728}
   - component: {fileID: 3290139318073490975}
   m_Layer: 8
-  m_Name: Enemy
+  m_Name: Normal
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -588,7 +588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024167c04a5871645adebc23aa8391de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
   _shootPoint: {fileID: 5820900861111388428}
   _player: {fileID: 0}
   _LGround:
@@ -612,7 +611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 1133204843496329563}
-  currentHealth: 0
+  _maxHealth: 100
 --- !u!195 &3290139318073490975
 NavMeshAgent:
   m_ObjectHideFlags: 0

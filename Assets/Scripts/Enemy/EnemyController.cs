@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] float _health;
     [SerializeField] Transform _shootPoint;
     [SerializeField] Transform _player;
     [SerializeField] LayerMask _LGround, _LPlayer;
@@ -31,7 +30,6 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         _rig = GetComponent<Rigidbody>();
-        gameObject.GetComponent<HealthManager>().SetHealth(_health);
         _nav = GetComponent<NavMeshAgent>();
         _player = GameObject.FindGameObjectWithTag("Player").transform;
     }

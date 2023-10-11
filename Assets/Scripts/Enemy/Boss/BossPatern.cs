@@ -12,7 +12,6 @@ public class BossPatern : MonoBehaviour
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player").transform;
-        _health.SetHealth(_defaultHealth);
 
         // set weapons active to false
         for(int i =0; i < weapons.Length; i++){

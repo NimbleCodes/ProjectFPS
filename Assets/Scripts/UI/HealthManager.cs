@@ -3,7 +3,14 @@ using UnityEngine.UI;
 public class HealthManager : MonoBehaviour
 {
     [SerializeField] private Slider HealthBar;
+    [SerializeField] float _maxHealth;
     float currentHealth;
+
+    void Start()
+    {
+        EventManager.events.StageStartEvent += SetHealth;
+        EventManager.events.Invoke_StageStartEvent();
+    }
     private void Update()
     {
         UpdateHealth();
@@ -16,9 +23,9 @@ public class HealthManager : MonoBehaviour
         currentHealth -= damage;
     }
 
-    public void SetHealth(float healthAmount){
-        HealthBar.maxValue = healthAmount;
-        HealthBar.value = healthAmount;
+    public void SetHealth(){
+        HealthBar.maxValue = _maxHealth;
+        HealthBar.value = _maxHealth;
         currentHealth = HealthBar.value;
     }
 

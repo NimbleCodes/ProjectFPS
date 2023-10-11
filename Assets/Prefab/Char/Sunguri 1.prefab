@@ -587,7 +587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024167c04a5871645adebc23aa8391de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
   _shootPoint: {fileID: 4114017919700232369}
   _player: {fileID: 0}
   _LGround:
@@ -611,7 +610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 5436182046409907603}
-  currentHealth: 100
+  _maxHealth: 100
 --- !u!195 &465567561133902248
 NavMeshAgent:
   m_ObjectHideFlags: 0
