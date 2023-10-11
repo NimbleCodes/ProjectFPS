@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -97,7 +95,6 @@ public class Movement : MonoBehaviour
 
 
     void DelayForce(){ // force delay to avoid dash force to player movement
-        //_rig.velocity = Vector3.zero;
         _rig.AddForce(_delayForce,ForceMode.Impulse);
     }
     void ResetDash(){

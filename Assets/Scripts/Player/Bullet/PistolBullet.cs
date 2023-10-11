@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class PistolBullet : MonoBehaviour
 {
@@ -34,7 +31,6 @@ public class PistolBullet : MonoBehaviour
         {
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                Debug.Log("충돌!!");
                 GameObject obj = hit.collider.gameObject;
                 obj.GetComponent<HealthManager>().MinusHealth(_damage);
                 Destroy(gameObject);
@@ -48,15 +44,4 @@ public class PistolBullet : MonoBehaviour
         this._speed = speed;
         Destroy(gameObject, 2.0f);
     }
-    // private void OnCollisionEnter(Collision collision)
-    // {
-    //    Debug.Log("충돌!!");
-    //    if (collision.collider.CompareTag("Enemy"))
-    //    {
-    //        Debug.Log(" 맞춤!!");
-    //        GameObject obj = collision.gameObject;
-    //        obj.GetComponent<HealthManager>().MinusHealth(_damage);
-    //        Destroy(gameObject);
-    //    }
-    // }
 }
