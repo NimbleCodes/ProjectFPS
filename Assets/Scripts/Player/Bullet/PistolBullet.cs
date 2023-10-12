@@ -5,7 +5,7 @@ public class PistolBullet : MonoBehaviour
     Rigidbody _rig;
     float _speed;
 
-    float _damage = 10f;
+    float _damage = 30f;
     RaycastHit hit;
     Ray ray;
     int layerMask;

@@ -8,8 +8,7 @@ public class HealthManager : MonoBehaviour
 
     void Start()
     {
-        EventManager.events.StageStartEvent += SetHealth;
-        EventManager.events.Invoke_StageStartEvent();
+        SetHealth();
     }
     private void Update()
     {

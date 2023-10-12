@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
@@ -21,7 +18,7 @@ public class EnemyController : MonoBehaviour
 
     //Enemy State
     float _sightRange = 20f, _attackRange= 12f;
-    bool _isInSight, _isInAttackRange,_isDead = false;
+    public bool _isInSight = false, _isInAttackRange=false,_isDead = false;
     public bool IsDead {get{return _isDead;} set{_isDead = value;}}
     Rigidbody _rig;
     float _dealtDamage =0;
@@ -38,6 +35,7 @@ public class EnemyController : MonoBehaviour
         if(_isDead) Destroy(gameObject);
         _isInSight = Physics.CheckSphere(transform.position, _sightRange, _LPlayer);
         _isInAttackRange = Physics.CheckSphere(transform.position, _attackRange,_LPlayer);
+        
 
         if(_isInSight == false && _isInAttackRange==false) Patrol();
         if(_isInSight && _isInAttackRange == false) Chase();

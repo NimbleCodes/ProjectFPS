@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -11,16 +10,19 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         _spawnEnemyNumber = _spawnPoints.Length;
+        EventManager.events.StageStartEvent += SpawnEnemies;
     }
 
     public int GetEnemyNumber(){
         return _spawnEnemyNumber;
     }
 
-    void SpawnEnempies(){
+    void SpawnEnemies(){
+        GameObject temp;
         for(int i =0; i < _spawnPoints.Length; i++){
-            int rand = Random.Range(0,_enemies.Length-1);
-            Instantiate(_enemies[rand], _spawnPoints[i]);
+            int rand = Random.Range(0,_enemies.Length);
+            temp = Instantiate(_enemies[rand], _spawnPoints[i]);
+            
         }
 
         GameManager.Instance.SpawnCheck(true);

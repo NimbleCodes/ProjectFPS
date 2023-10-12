@@ -3,7 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
-    bool _isSpawnDone = false;
+    bool _isSpawnDone = false, _isStageStarted = false;
     
     void Awake()
     {
@@ -24,7 +24,16 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
+
+    void Update()
+    {
+        if(_isStageStarted == false){
+            EventManager.events.Invoke_StageStartEvent();
+            _isStageStarted = true;
+        }
+    }
     public void SpawnCheck(bool done){
         _isSpawnDone = done;
     }
+    
 }
