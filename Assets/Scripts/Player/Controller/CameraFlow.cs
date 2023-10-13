@@ -28,4 +28,12 @@ public class CameraFlow : GenericSingleton<CameraFlow>
         transform.rotation = Quaternion.Euler(_rotationX, _rotationY, 0);
         _playerDir.rotation = Quaternion.Euler(0, _rotationY, 0);
     }
+
+    public void SetVertical(float val){
+        _senceY = val;
+    }
+
+    public void SetHorizontal(float val){
+        _senceX = val;
+    }
 }

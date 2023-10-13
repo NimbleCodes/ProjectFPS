@@ -21,17 +21,18 @@ public class MenuPanel : MonoBehaviour
         _helpPanel.SetActive(true);
     }
 
-    public void OpenYouSure(){
+    public void OnRestartClick(){
         _areYouSurePanel.SetActive(true);
+        _areYouSurePanel.GetComponent<AreYouSure>().SetRestart(true);
     }
 
-    public void OnOkClick(){
+    public void OnMainClick(){
         _areYouSurePanel.SetActive(false);
-        //추가 사항
+        _areYouSurePanel.GetComponent<AreYouSure>().SetMain(true);
     }
 
-    public void OnCancelClick(){
+    public void OnQuitClick(){
         _areYouSurePanel.SetActive(false);
-        //추가사항
+        _areYouSurePanel.GetComponent<AreYouSure>().SetQuit(true);
     }
 }
