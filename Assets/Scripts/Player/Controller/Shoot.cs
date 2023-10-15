@@ -46,4 +46,6 @@ public class Shoot : MonoBehaviour
 public enum GunType{
     Pistol,
     AssultRifle,
+    PlasmaCannon,
+    Blaster,
 }

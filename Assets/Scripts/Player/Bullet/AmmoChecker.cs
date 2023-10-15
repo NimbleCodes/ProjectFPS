@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,10 @@ public class AmmoChecker : MonoBehaviour
     // Assult Rifle Ammo Info Guns[1]
     int curAAmmo = 60, maxAAmmo = 240;
     public bool _isAssultREmpty {get; set;}
+
+    //Plasma Cannon Ammo Info Guns[2]
+    int curCAmmo = 10, maxCAmmo = 30;
+    public bool _isCannonEmpty {get; set;}
 
     void Update()
     {
@@ -44,9 +49,23 @@ public class AmmoChecker : MonoBehaviour
         }
     }
 
+    public void AddPlasmaCAmmo(int ammo){
+        curCAmmo += ammo;
+        if(curCAmmo >= maxCAmmo){
+            curCAmmo = maxCAmmo;
+        }
+    }
+    public void SubPlasmaCAmmo(){
+        curCAmmo -= 1;
+        if(curCAmmo < 0){
+            curCAmmo = 0;
+        }
+    }
+
     public void UpdateAmmoInfo(){
         _ammoInfo[0].text = $"{curPAmmo}/{maxPAmmo}";
         _ammoInfo[1].text = $"{curAAmmo}/{maxAAmmo}";
+        _ammoInfo[2].text = $"{curCAmmo}/{maxCAmmo}";
 
         if(curPAmmo <= 0){
             _isPistolEmpty = true;
@@ -58,6 +77,12 @@ public class AmmoChecker : MonoBehaviour
             _isAssultREmpty = true;
         }else{
             _isAssultREmpty = false;
+        }
+
+        if(curCAmmo <= 0){
+            _isCannonEmpty = true;
+        }else{
+            _isCannonEmpty = false;
         }
     }
 

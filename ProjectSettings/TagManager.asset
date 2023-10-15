@@ -11,11 +11,12 @@ TagManager:
   - WeaponRing
   - Weapon
   - HUD
+  - Bullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Bullet
   - Water
   - UI
   - Ground
