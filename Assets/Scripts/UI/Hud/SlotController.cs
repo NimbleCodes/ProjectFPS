@@ -32,7 +32,8 @@ public class SlotController : MonoBehaviour
     }
     
     private void Update() {
-        _mousePosNormal = new Vector2(Input.mousePosition.x - Screen.width/3f, Input.mousePosition.y - Screen.width/3f);
+        _mousePosNormal = new Vector2(Input.mousePosition.x - Screen.width/2f, Input.mousePosition.y - Screen.width/2f);
+        // Atan2 음수값 허용
         _currAngle = Mathf.Atan2(_mousePosNormal.y, _mousePosNormal.x) * Mathf.Rad2Deg;
         _currAngle = (_currAngle + 360)%360;
         _selected = (int)_currAngle/90;

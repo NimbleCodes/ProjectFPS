@@ -8,6 +8,8 @@ public class HudController : MonoBehaviour
     [SerializeField] GameObject _camController;
     [SerializeField] GameObject _YouDiedPanel;
     [SerializeField] GameObject _GameClearPanel;
+    [SerializeField] GameObject _AreYouSurePanel;
+    [SerializeField] GameObject _OptionPanel;
     [SerializeField] bool _isRingActive = false, _isMainMenuActive =false;
     GameObject _currentWeapon;
     
@@ -18,6 +20,8 @@ public class HudController : MonoBehaviour
         _mainMenu.SetActive(false);
         _YouDiedPanel.SetActive(false);
         _GameClearPanel.SetActive(false);
+        _AreYouSurePanel.SetActive(false);
+        _OptionPanel.SetActive(false);
         _currentWeapon = GameObject.Find("Pistol");
         _camController = EventManager.events.GetMainCamera();
         EventManager.events.GameOverEvent += ShowYouDiedPanel;

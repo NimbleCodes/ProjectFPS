@@ -61,7 +61,7 @@ public class AmmoChecker : MonoBehaviour
                 break;
             
             case 3:
-                _currentWeaponImg.sprite = _weaponImgs[4];
+                _currentWeaponImg.sprite = _weaponImgs[3];
                 _currentAmmoText.text = $"{curBAmmo}/{maxBAmmo}";
                 break;
         }

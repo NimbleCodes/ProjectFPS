@@ -34,13 +34,13 @@ public class MenuPanel : MonoBehaviour
     }
 
     public void OnMainClick(){
-        _areYouSurePanel.SetActive(false);
+        _areYouSurePanel.SetActive(true);
         _areYouSurePanel.GetComponent<AreYouSure>().SetMain(true);
     }
 
     public void OnQuitClick(){
         PlayerPrefs.SetInt("HowToPlayOpen", 0);
-        _areYouSurePanel.SetActive(false);
+        _areYouSurePanel.SetActive(true);
         _areYouSurePanel.GetComponent<AreYouSure>().SetQuit(true);
     }
 }

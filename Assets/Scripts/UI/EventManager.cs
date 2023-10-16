@@ -39,8 +39,6 @@ public class EventManager : MonoBehaviour
         }
     }
     
-
-
     public void StopPlayerInput(){
         _player.GetComponent<Movement>().enabled =false;
         _cam.GetComponent<CameraFlow>().enabled = false;
@@ -91,42 +89,35 @@ public class EventManager : MonoBehaviour
         _isSpawnDone = done;
     }
     public event Action StageStartEvent;
+    public event Action GameOverEvent;
+    public event Action BossTriggerEvent;
+    public event Action StageRestartEvent;
+    public event Action GameClearEvent;
+    
     public void Invoke_StageStartEvent(){
         if(StageStartEvent != null){
             StageStartEvent();
         }
     }
 
-    public event Action GameOverEvent;
     public void Invoke_GameOverEvent(){
         if(GameOverEvent != null){
             GameOverEvent();
         }
     }
     
-    // 모든 이펙트 볼륨 변경 함수를 등록
-    // 이펙트 value 변경시 event 실행, 모든 이팩트 볼륨 관리
-    public event Action<float> EffectsVolumeChangeEvent;
-    public void Invoke_EffectsVolumeChangeEvent(float volume){
-        if(EffectsVolumeChangeEvent != null){
-            EffectsVolumeChangeEvent(volume);
-        }
-    }
-    public event Action BossTriggerEvent;
     public void Invoke_BossTriggerEvent(){
         if(BossTriggerEvent != null){
             BossTriggerEvent();
         }
     }
 
-    public event Action StageRestartEvent;
     public void Invoke_StageRestartEvent(){
         if(StageRestartEvent != null){
             StageRestartEvent();
         }
     }
 
-    public event Action GameClearEvent;
     public void Invoke_GameClearEvent(){
         if(GameClearEvent != null){
             GameClearEvent();

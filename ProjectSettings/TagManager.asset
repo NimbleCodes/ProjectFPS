@@ -13,6 +13,7 @@ TagManager:
   - HUD
   - Bullet
   - CamPos
+  - SoundEffect
   layers:
   - Default
   - TransparentFX

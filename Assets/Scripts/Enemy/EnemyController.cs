@@ -81,7 +81,8 @@ public class EnemyController : MonoBehaviour
                 GameObject bullet = Instantiate(_enemyBullet, _shootPoint.transform.position,transform.rotation);
                 bullet.GetComponent<Bomb>().Init(150);
             }else if(GunType == EnemyGunType.ShotGun){
-                _shotGun.GetComponent<ParticleSystem>().Play();
+                GameObject shotGun = Instantiate(_shotGun, _shootPoint.transform.position, transform.rotation);
+                shotGun.GetComponent<ParticleSystem>().Play();
             }else if(GunType == EnemyGunType.Blaster){
                 GameObject bullet = Instantiate(_Blast, _shootPoint.transform.position, transform.rotation);
                 bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 12 + bullet.transform.up * 2, ForceMode.Impulse);

@@ -8,6 +8,8 @@ public class Shoot : MonoBehaviour
     [SerializeField] Transform _aimPoint;
     [SerializeField] Transform _gunholder;
     [SerializeField] GunType _gunType;
+    [SerializeField] AudioClip _effect;
+    [SerializeField] AudioSource _effectPlayer;
     GameObject Bullet;
     public bool _isAmmoEmpty;
     GameObject _ammoChecker;
@@ -53,6 +55,8 @@ public class Shoot : MonoBehaviour
                 }
                 
             }
+
+            _effectPlayer.PlayOneShot(_effect);
         }
     }
 }
