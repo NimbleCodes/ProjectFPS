@@ -3,7 +3,11 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
+    [SerializeField] GameObject _player, _cam;
     private static EventManager eventManager = null;
+    bool _isSpawnDone = false, _isStageStarted = false, _isGameOver = false;
+    bool _isGameClear = false;
+    int AllEnemy, EnemyKilled = 0;
 
     void Awake()
     {
@@ -26,6 +30,64 @@ public class EventManager : MonoBehaviour
         }
     }
 
+
+    void Update()
+    {
+        if(_isStageStarted == false){
+            Invoke_StageStartEvent();
+            _isStageStarted = true;
+        }
+    }
+
+    public void StopPlayerInput(){
+        _player.GetComponent<Movement>().enabled =false;
+        _cam.GetComponent<CameraFlow>().enabled = false;
+    }
+
+    public void StartPlayerInput(){
+        _player.GetComponent<Movement>().enabled = true;
+        _cam.GetComponent<CameraFlow>().enabled = true;
+    }
+    public GameObject GetPlayer(){
+        if(_player == null){
+            _player = GameObject.FindGameObjectWithTag("Player");
+        }
+        return _player;
+    }
+
+    public GameObject GetMainCamera(){
+        if(_cam == null){
+            _cam = GameObject.FindGameObjectWithTag("MainCamera");
+        }
+        return _cam;
+    }
+    public void SetGameClear(bool tf){
+        _isGameClear = tf;
+    }
+
+    public void SetGameOver(bool tf){
+        _isGameOver = tf;
+    }
+
+    public void SetEnemyNumber(int number){
+        AllEnemy = number;
+    }
+
+    public void AddKilledEnemy(){
+        EnemyKilled += 1;
+    }
+
+    public int GetCurrentEnemyNumb(){
+        return EnemyKilled;
+    }
+
+    public int GetAllEnemyNumb(){
+        return AllEnemy;
+    }
+
+    public void SpawnCheck(bool done){
+        _isSpawnDone = done;
+    }
 
     // 스테이지 시작시 모든 데이터 init
     // 모든 스포너 init

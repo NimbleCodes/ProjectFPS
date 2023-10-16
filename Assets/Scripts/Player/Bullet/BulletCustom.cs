@@ -13,7 +13,7 @@ public class BulletCustom : MonoBehaviour
     [SerializeField] float explosionForce;
     [SerializeField] float lifeTime;
 
-    [Header("Drop Down")]
+    [Header("Grenade Launcher")]
     [SerializeField] float dropTime;
     [SerializeField] float waitMidAir;
     [SerializeField] float dropForce;
@@ -74,6 +74,9 @@ public class BulletCustom : MonoBehaviour
         }
 
         Invoke("Delay", 0.05f);
+    }
+    void Delay(){
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter(Collision other) {

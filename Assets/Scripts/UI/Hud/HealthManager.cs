@@ -5,10 +5,14 @@ public class HealthManager : MonoBehaviour
     [SerializeField] private Slider HealthBar;
     [SerializeField] float _maxHealth;
     float currentHealth;
+    GameObject _cam;
+    GameObject _player;
 
     void Start()
     {
         SetHealth();
+        _cam = GameObject.FindGameObjectWithTag("MainCamera");
+        _player = GameObject.FindGameObjectWithTag("Player");
     }
     private void Update()
     {
@@ -44,9 +48,12 @@ public class HealthManager : MonoBehaviour
     void checkDeath(){
         if(gameObject.CompareTag("Enemy")){
             GetComponent<EnemyController>().IsDead = true;
+            EventManager.events.AddKilledEnemy();
         }
         if(gameObject.CompareTag("Player")){
-
+            _player.GetComponent<Movement>().enabled = false;
+            _cam.GetComponent<CameraFlow>().enabled = false;
+            EventManager.events.SetGameOver(true);
         }
     }
 }

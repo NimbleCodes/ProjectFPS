@@ -140,7 +140,7 @@ MonoBehaviour:
   explosionForce: 0
   lifeTime: 4
   dropTime: 0.75
-  waitMidAir: 0.5
+  waitMidAir: 0
   dropForce: 30
   explodeAfterDrop: 1
 --- !u!96 &1092911032284006343

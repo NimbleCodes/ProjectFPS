@@ -1,4 +1,4 @@
-using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +6,7 @@ public class AmmoChecker : MonoBehaviour
 {
     [SerializeField] GameObject[] _Guns;
     [SerializeField] Text[] _ammoInfo;
+    [SerializeField] GameObject _weaponRing;
 
     //Pistol Ammo Info Guns[0]
     int curPAmmo = 12, maxPAmmo = 60;
@@ -15,13 +16,23 @@ public class AmmoChecker : MonoBehaviour
     int curAAmmo = 60, maxAAmmo = 240;
     public bool _isAssultREmpty {get; set;}
 
-    //Plasma Cannon Ammo Info Guns[2]
+    // Plasma Cannon Ammo Info Guns[2]
     int curCAmmo = 10, maxCAmmo = 30;
     public bool _isCannonEmpty {get; set;}
+
+    // Blaster Ammo Info Guns[3]
+    int curBAmmo = 12, maxBAmmo = 24;
 
     void Update()
     {
         UpdateAmmoInfo();
+    }
+
+    void Start()
+    {
+        _weaponRing = GameObject.Find("WeaponRing");
+        _ammoInfo = _weaponRing.GetComponent<SlotController>().GetTexts();
+        
     }
     public void AddPistolAmmo(int ammo){
         curPAmmo += ammo;
@@ -59,6 +70,19 @@ public class AmmoChecker : MonoBehaviour
         curCAmmo -= 1;
         if(curCAmmo < 0){
             curCAmmo = 0;
+        }
+    }
+
+    public void AddBlasterAmmo(int ammo){
+        curBAmmo += ammo;
+        if(curBAmmo >= maxBAmmo){
+            curBAmmo = maxBAmmo;
+        }
+    }
+    public void SubBlasterAmmo(){
+        curBAmmo -= 1;
+        if(curBAmmo < 0){
+            curBAmmo = 0;
         }
     }
 

@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SlotController : MonoBehaviour
 {
     [SerializeField] GameObject[] _Guns;
     [SerializeField] GameObject[] _slots;
+    [SerializeField] Text[] texts;
     GameObject _hud;
     public Vector2 _mousePosNormal;
     public float _currAngle;
@@ -48,6 +50,9 @@ public class SlotController : MonoBehaviour
         }
     }
 
+    public Text[] GetTexts(){
+        return texts;
+    }
     void ChangeGun(){
         foreach(GameObject gun in _Guns){
             gun.SetActive(false);

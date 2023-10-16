@@ -34,9 +34,11 @@ public class AreYouSure : MonoBehaviour
     public void OkButtonOnClick(){
         if(_isRestart){
             _isRestart = false;
+            EventManager.events.StartPlayerInput();
             SceneManager.LoadScene("AlphaScene");
         }else if(_isMain){
             _isMain = false;
+            EventManager.events.StartPlayerInput();
             SceneManager.LoadScene("Main");
         }else if(_isQuit){
             _isQuit = false;

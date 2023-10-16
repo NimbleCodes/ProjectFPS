@@ -11,10 +11,8 @@ public class EnemySpawner : MonoBehaviour
     {
         _spawnEnemyNumber = _spawnPoints.Length;
         EventManager.events.StageStartEvent += SpawnEnemies;
-    }
 
-    public int GetEnemyNumber(){
-        return _spawnEnemyNumber;
+        EventManager.events.SetEnemyNumber(_spawnEnemyNumber);
     }
 
     void SpawnEnemies(){
@@ -25,6 +23,6 @@ public class EnemySpawner : MonoBehaviour
             
         }
 
-        GameManager.Instance.SpawnCheck(true);
+        EventManager.events.SpawnCheck(true);
     }
 }

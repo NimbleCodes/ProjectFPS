@@ -12,11 +12,6 @@ public class Bomb : MonoBehaviour
         _rig.AddForce(transform.forward * 15f, ForceMode.Impulse);
         _rig.AddForce(transform.up * 5f, ForceMode.Impulse);
     }
-    //void FixedUpdate()
-    //{
-    //    _rig.AddForce(transform.forward * 5f, ForceMode.Impulse);
-    //    _rig.AddForce(transform.up * 5f, ForceMode.Impulse);
-    //}
     public void Init(float speed)
     {
         this._speed = speed;
@@ -27,7 +22,7 @@ public class Bomb : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-
+            collision.gameObject.GetComponent<HealthManager>().MinusHealth(_damage);
             Destroy(gameObject);
         }
     }

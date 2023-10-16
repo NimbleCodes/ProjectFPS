@@ -136,9 +136,13 @@ MonoBehaviour:
   useGravity: 1
   explosionEnable: 1
   explosionDamage: 50
-  explosionRange: 4
-  explosionForce: 0
+  explosionRange: 7
+  explosionForce: 5
   lifeTime: 3
+  dropTime: 0
+  waitMidAir: 0
+  dropForce: 0
+  explodeAfterDrop: 0
 --- !u!96 &8347295885665158
 TrailRenderer:
   serializedVersion: 2
