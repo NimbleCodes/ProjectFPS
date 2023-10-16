@@ -25,6 +25,7 @@ public class Movement : MonoBehaviour
     {
         _rig = GetComponent<Rigidbody>();
         _rig.freezeRotation = true;
+        text.text =  (int)_dashCdslider.value + " / 2";
     }
 
     private void FixedUpdate()

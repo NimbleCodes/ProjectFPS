@@ -12,6 +12,7 @@ TagManager:
   - Weapon
   - HUD
   - Bullet
+  - CamPos
   layers:
   - Default
   - TransparentFX

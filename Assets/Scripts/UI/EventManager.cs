@@ -1,13 +1,15 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EventManager : MonoBehaviour
 {
-    [SerializeField] GameObject _player, _cam;
+    [SerializeField] GameObject _player, _cam, _hud;
     private static EventManager eventManager = null;
-    bool _isSpawnDone = false, _isStageStarted = false, _isGameOver = false;
+    bool _isSpawnDone = false;
     bool _isGameClear = false;
     int AllEnemy, EnemyKilled = 0;
+    string sceneName;
 
     void Awake()
     {
@@ -29,15 +31,15 @@ public class EventManager : MonoBehaviour
             return eventManager;
         }
     }
-
-
-    void Update()
-    {
-        if(_isStageStarted == false){
+    private void Start() {
+        Scene currentScene = SceneManager.GetActiveScene();
+        sceneName = currentScene.name;
+        if(sceneName == "AlphaScene"){
             Invoke_StageStartEvent();
-            _isStageStarted = true;
         }
     }
+    
+
 
     public void StopPlayerInput(){
         _player.GetComponent<Movement>().enabled =false;
@@ -54,6 +56,12 @@ public class EventManager : MonoBehaviour
         }
         return _player;
     }
+    public GameObject GetHud(){
+        if(_hud == null){
+            _hud = GameObject.Find("HUD");
+        }
+        return _hud;
+    }
 
     public GameObject GetMainCamera(){
         if(_cam == null){
@@ -61,13 +69,7 @@ public class EventManager : MonoBehaviour
         }
         return _cam;
     }
-    public void SetGameClear(bool tf){
-        _isGameClear = tf;
-    }
-
-    public void SetGameOver(bool tf){
-        _isGameOver = tf;
-    }
+   
 
     public void SetEnemyNumber(int number){
         AllEnemy = number;
@@ -88,9 +90,6 @@ public class EventManager : MonoBehaviour
     public void SpawnCheck(bool done){
         _isSpawnDone = done;
     }
-
-    // 스테이지 시작시 모든 데이터 init
-    // 모든 스포너 init
     public event Action StageStartEvent;
     public void Invoke_StageStartEvent(){
         if(StageStartEvent != null){
@@ -98,12 +97,8 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    // 스테이지 종료시 모든 데이터 초기화
-    // 모든 스포너 초기화
-    // 이미 나와있는 몬스터 초기화
-    // respawn point로 캐릭터 옮김
     public event Action GameOverEvent;
-    public void Invoke_GmaeOverEvent(){
+    public void Invoke_GameOverEvent(){
         if(GameOverEvent != null){
             GameOverEvent();
         }
@@ -121,6 +116,20 @@ public class EventManager : MonoBehaviour
     public void Invoke_BossTriggerEvent(){
         if(BossTriggerEvent != null){
             BossTriggerEvent();
+        }
+    }
+
+    public event Action StageRestartEvent;
+    public void Invoke_StageRestartEvent(){
+        if(StageRestartEvent != null){
+            StageRestartEvent();
+        }
+    }
+
+    public event Action GameClearEvent;
+    public void Invoke_GameClearEvent(){
+        if(GameClearEvent != null){
+            GameClearEvent();
         }
     }
 

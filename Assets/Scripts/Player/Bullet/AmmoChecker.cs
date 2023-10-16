@@ -1,12 +1,13 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AmmoChecker : MonoBehaviour
 {
-    [SerializeField] GameObject[] _Guns;
     [SerializeField] Text[] _ammoInfo;
     [SerializeField] GameObject _weaponRing;
+    [SerializeField] Sprite[] _weaponImgs;
+    [SerializeField] Image _currentWeaponImg;
+    [SerializeField] Text _currentAmmoText;
 
     //Pistol Ammo Info Guns[0]
     int curPAmmo = 12, maxPAmmo = 60;
@@ -22,7 +23,13 @@ public class AmmoChecker : MonoBehaviour
 
     // Blaster Ammo Info Guns[3]
     int curBAmmo = 12, maxBAmmo = 24;
+    public bool _isBlasterEmpty {get;set;}
 
+    // Current Weapon info
+    int currentWeapon;
+    private void Awake() {
+        _weaponRing = GameObject.Find("WeaponRing");
+    }
     void Update()
     {
         UpdateAmmoInfo();
@@ -30,9 +37,34 @@ public class AmmoChecker : MonoBehaviour
 
     void Start()
     {
-        _weaponRing = GameObject.Find("WeaponRing");
         _ammoInfo = _weaponRing.GetComponent<SlotController>().GetTexts();
+        SetCurrentWeapon(0);
         
+    }
+
+    public void SetCurrentWeapon(int num){
+        currentWeapon= num;
+        switch(currentWeapon){
+            case 0:
+                _currentWeaponImg.sprite = _weaponImgs[0];
+                _currentAmmoText.text = $"{curPAmmo}/{maxPAmmo}";
+                break;
+
+            case 1:
+                _currentWeaponImg.sprite = _weaponImgs[1];
+                _currentAmmoText.text = $"{curAAmmo}/{maxAAmmo}";
+                break;
+
+            case 2:
+                _currentWeaponImg.sprite = _weaponImgs[2];
+                _currentAmmoText.text = $"{curCAmmo}/{maxCAmmo}";
+                break;
+            
+            case 3:
+                _currentWeaponImg.sprite = _weaponImgs[4];
+                _currentAmmoText.text = $"{curBAmmo}/{maxBAmmo}";
+                break;
+        }
     }
     public void AddPistolAmmo(int ammo){
         curPAmmo += ammo;
@@ -90,6 +122,7 @@ public class AmmoChecker : MonoBehaviour
         _ammoInfo[0].text = $"{curPAmmo}/{maxPAmmo}";
         _ammoInfo[1].text = $"{curAAmmo}/{maxAAmmo}";
         _ammoInfo[2].text = $"{curCAmmo}/{maxCAmmo}";
+        _ammoInfo[3].text = $"{curBAmmo}/{maxBAmmo}";
 
         if(curPAmmo <= 0){
             _isPistolEmpty = true;
@@ -107,6 +140,30 @@ public class AmmoChecker : MonoBehaviour
             _isCannonEmpty = true;
         }else{
             _isCannonEmpty = false;
+        }
+
+        if(curBAmmo <= 0){
+            _isBlasterEmpty = true;
+        }else{
+            _isBlasterEmpty = false;
+        }
+
+        switch(currentWeapon){
+            case 0:
+                _currentAmmoText.text = $"{curPAmmo}/{maxPAmmo}";
+                break;
+
+            case 1:
+                _currentAmmoText.text = $"{curAAmmo}/{maxAAmmo}";
+                break;
+
+            case 2:
+                _currentAmmoText.text = $"{curCAmmo}/{maxCAmmo}";
+                break;
+            
+            case 3:
+                _currentAmmoText.text = $"{curBAmmo}/{maxBAmmo}";
+                break;
         }
     }
 

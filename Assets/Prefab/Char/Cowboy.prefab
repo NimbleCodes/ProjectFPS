@@ -1331,7 +1331,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _enemyBullet: {fileID: 7163104057520424512, guid: 1365bf3ec8234a141885638b7e43c187, type: 3}
+  _shotGun: {fileID: 8871379139050700094, guid: c344b28191846e94fa55669453570c4c, type: 3}
+  _Blast: {fileID: 5261908539032414034, guid: a76159123809ded40be01ae83e0ce5a5, type: 3}
+  GunType: 1
   _patrolPoint: {x: 0, y: 0, z: 0}
+  _isInSight: 0
+  _isInAttackRange: 0
+  _isDead: 0
 --- !u!114 &7037947544721916114
 MonoBehaviour:
   m_ObjectHideFlags: 0

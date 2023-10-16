@@ -10,7 +10,7 @@ public class Bomb : MonoBehaviour
     {
         _rig = GetComponent<Rigidbody>();
         _rig.AddForce(transform.forward * 15f, ForceMode.Impulse);
-        _rig.AddForce(transform.up * 5f, ForceMode.Impulse);
+        _rig.AddForce(transform.up * 2f, ForceMode.Impulse);
     }
     public void Init(float speed)
     {

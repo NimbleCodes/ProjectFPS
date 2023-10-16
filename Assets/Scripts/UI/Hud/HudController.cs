@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class HudController : MonoBehaviour
 {
+    [SerializeField] GameObject[] _allWeapon;
     [SerializeField] GameObject _weaponRing;
     [SerializeField] GameObject _mainMenu;
     [SerializeField] GameObject _camController;
-    bool _isRingActive = false, _isMainMenuActive =false;
+    [SerializeField] GameObject _YouDiedPanel;
+    [SerializeField] GameObject _GameClearPanel;
+    [SerializeField] bool _isRingActive = false, _isMainMenuActive =false;
     GameObject _currentWeapon;
     
     
@@ -13,9 +16,12 @@ public class HudController : MonoBehaviour
     private void Start() {
         _weaponRing.SetActive(false);
         _mainMenu.SetActive(false);
+        _YouDiedPanel.SetActive(false);
+        _GameClearPanel.SetActive(false);
         _currentWeapon = GameObject.Find("Pistol");
         _camController = EventManager.events.GetMainCamera();
-        Debug.Log(EventManager.events.GetMainCamera().name);
+        EventManager.events.GameOverEvent += ShowYouDiedPanel;
+        EventManager.events.GameClearEvent += ShowGameClearPanel;
     }
 
     void Update()
@@ -24,8 +30,14 @@ public class HudController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Tab) && !_isMainMenuActive){
             if(!_isRingActive){
                 showWeaponRing();
+                for(int i =0; i < _allWeapon.Length; i++){
+                    _allWeapon[i].GetComponent<Shoot>().enabled = false;
+                }
             }else{
                 closeWeaponRing();
+                for(int i =0; i < _allWeapon.Length; i++){
+                    _allWeapon[i].GetComponent<Shoot>().enabled = true;
+                }
             }
         }
 
@@ -45,20 +57,23 @@ public class HudController : MonoBehaviour
         // Pause Game on Menu Open
         if(_isMainMenuActive) PauseScene();
     }
+    public void SetMainMenuFlag(bool tf){
+        _isMainMenuActive = tf;
+    }
     void SetCurrentWeapon(GameObject weapon){
         _currentWeapon = weapon;
     }
 
-    void SlowDownScene(){
+    public void SlowDownScene(){
         Time.timeScale = 0.2f;
         Time.fixedDeltaTime = Time.timeScale * 0.02f;
     }
 
-    void PauseScene(){
+    public void PauseScene(){
         Time.timeScale = 0f;
     }
 
-    void SceneNormalSpeed(){
+    public void SceneNormalSpeed(){
         Time.timeScale = 1f;
         Time.fixedDeltaTime = Time.timeScale * 0.02f;
     }
@@ -101,5 +116,17 @@ public class HudController : MonoBehaviour
         // 마우스 커서 비활성화
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    public void ShowYouDiedPanel(){
+        _YouDiedPanel.SetActive(true);
+        _camController.GetComponent<CameraFlow>().enabled = false;
+        _currentWeapon.GetComponent<Shoot>().enabled = false;
+    }
+
+    public void ShowGameClearPanel(){
+        _GameClearPanel.SetActive(true);
+        _camController.GetComponent<CameraFlow>().enabled = false;
+        _currentWeapon.GetComponent<Shoot>().enabled = false;
     }
 }

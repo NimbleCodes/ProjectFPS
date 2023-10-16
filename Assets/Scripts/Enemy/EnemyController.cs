@@ -6,6 +6,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] Transform _player;
     [SerializeField] LayerMask _LGround, _LPlayer;
     [SerializeField] GameObject _enemyBullet;
+    [SerializeField] GameObject _shotGun;
+    [SerializeField] GameObject _Blast;
+    [SerializeField] EnemyGunType GunType;
     //patrol
     [SerializeField] Vector3 _patrolPoint;
     NavMeshAgent _nav;
@@ -74,8 +77,16 @@ public class EnemyController : MonoBehaviour
         _shootPoint.LookAt(_player);
 
         if(_isAttacked == false){
-            GameObject bullet = Instantiate(_enemyBullet, _shootPoint.transform.position,transform.rotation);
-            bullet.GetComponent<Bomb>().Init(150);
+            if(GunType == EnemyGunType.NormalGun){
+                GameObject bullet = Instantiate(_enemyBullet, _shootPoint.transform.position,transform.rotation);
+                bullet.GetComponent<Bomb>().Init(150);
+            }else if(GunType == EnemyGunType.ShotGun){
+                _shotGun.GetComponent<ParticleSystem>().Play();
+            }else if(GunType == EnemyGunType.Blaster){
+                GameObject bullet = Instantiate(_Blast, _shootPoint.transform.position, transform.rotation);
+                bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 12 + bullet.transform.up * 2, ForceMode.Impulse);
+            } 
+
             _isAttacked =true;
             Invoke(nameof(ResetAttack), _attackDelay);
         }
@@ -92,4 +103,10 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, _sightRange);
     }
 
+}
+
+enum EnemyGunType{
+    NormalGun,
+    ShotGun,
+    Blaster,
 }

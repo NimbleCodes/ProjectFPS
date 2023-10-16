@@ -25,13 +25,14 @@ public class Shoot : MonoBehaviour
             _isAmmoEmpty = _ammoChecker.GetComponent<AmmoChecker>()._isPistolEmpty;
         }else if(_gunType == GunType.AssultRifle){
             _isAmmoEmpty = _ammoChecker.GetComponent<AmmoChecker>()._isAssultREmpty;
-        }  
+        }else if(_gunType == GunType.PlasmaCannon){
+            _isAmmoEmpty = _ammoChecker.GetComponent<AmmoChecker>()._isCannonEmpty;
+        }else if(_gunType == GunType.Blaster){
+            _isAmmoEmpty = _ammoChecker.GetComponent<AmmoChecker>()._isBlasterEmpty;
+        }
         
         _shootPoint.LookAt(_aimPoint);
 
-        // Todo : 총기 형식에 따른 발사 Force 설정
-        // 발사후 총알에서 자체적인 Force 적용이 아닌
-        // 총기로부터 Force를 주는것으로 변경필요
         if (Input.GetMouseButtonDown(0))
         { 
             if(_isAmmoEmpty == false){

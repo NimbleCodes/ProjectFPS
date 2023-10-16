@@ -5,6 +5,7 @@ public class SlotController : MonoBehaviour
 {
     [SerializeField] GameObject[] _Guns;
     [SerializeField] GameObject[] _slots;
+    [SerializeField] GameObject _ammoChecker;
     [SerializeField] Text[] texts;
     GameObject _hud;
     public Vector2 _mousePosNormal;
@@ -15,10 +16,11 @@ public class SlotController : MonoBehaviour
     ItemSlot _currSlot;
     ItemSlot _prevSlot;
     GameObject _player = null;
+    
     void Start()
     {
-       _player = GameObject.FindGameObjectWithTag("Player");
-       _hud = GameObject.FindGameObjectWithTag("HUD");
+        _player = EventManager.events.GetPlayer();
+        _hud = EventManager.events.GetHud();
        for(int i =1; i < _Guns.Length;i++){
         _Guns[i].SetActive(false);
        }
@@ -46,6 +48,7 @@ public class SlotController : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0)){
             ChangeGun();
+            _ammoChecker.GetComponent<AmmoChecker>().SetCurrentWeapon(_selected);
             _hud.GetComponent<HudController>().closeWeaponRing();
         }
     }

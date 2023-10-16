@@ -5,7 +5,7 @@ public class MoveCam : MonoBehaviour
     [SerializeField] private Transform camPos;
     void Start()
     {
-        camPos = GameObject.Find("CameraPosition").transform;
+        camPos = GameObject.FindGameObjectWithTag("CamPos").transform;
     }
     void Update()
     {

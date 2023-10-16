@@ -7,6 +7,9 @@ public class AreYouSure : MonoBehaviour
     [SerializeField] Text _caution;
     bool _isRestart = false, _isMain = false, _isQuit = false;
 
+    private void Start() {
+        EventManager.events.StageRestartEvent += ResetSpawner;
+    }
     void Update()
     {
         if(_isRestart){
@@ -35,10 +38,13 @@ public class AreYouSure : MonoBehaviour
         if(_isRestart){
             _isRestart = false;
             EventManager.events.StartPlayerInput();
+            
             SceneManager.LoadScene("AlphaScene");
+            EventManager.events.Invoke_StageRestartEvent();
         }else if(_isMain){
             _isMain = false;
             EventManager.events.StartPlayerInput();
+            EventManager.events.Invoke_StageRestartEvent();
             SceneManager.LoadScene("Main");
         }else if(_isQuit){
             _isQuit = false;
@@ -57,5 +63,9 @@ public class AreYouSure : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+    }
+
+    public void ResetSpawner(){
+        EventManager.events.SpawnCheck(false);
     }
 }

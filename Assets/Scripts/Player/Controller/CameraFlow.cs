@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraFlow : GenericSingleton<CameraFlow>
+public class CameraFlow : MonoBehaviour
 {
     float _senceX, _senceY;
     float _rotationX, _rotationY;
@@ -8,8 +8,8 @@ public class CameraFlow : GenericSingleton<CameraFlow>
     [SerializeField] Transform _playerDir;
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        
+        _playerDir = EventManager.events.GetPlayer().transform;
     }
 
     // Update is called once per frame

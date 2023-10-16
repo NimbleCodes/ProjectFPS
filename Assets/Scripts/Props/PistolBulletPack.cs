@@ -8,6 +8,7 @@ public class PistolBulletPack : MonoBehaviour
     {
         GameObject AmmoChecker = GameObject.Find("AmmoChecker");
         AmmoChecker.GetComponent<AmmoChecker>().AddPistolAmmo(Ammo);
+        Destroy(gameObject);
     }
 
 }

@@ -7,7 +7,7 @@ public class AmmoSpawner : MonoBehaviour
 
     void Start()
     {
-        EventManager.events.StageStartEvent += SpawnAmmo;
+        SpawnAmmo();
     }
 
     public void SpawnAmmo(){

@@ -5,12 +5,19 @@ public class MenuPanel : MonoBehaviour
     [SerializeField] GameObject _optionPanel;
     [SerializeField] GameObject _helpPanel;
     [SerializeField] GameObject _areYouSurePanel;
+    [SerializeField] GameObject _hud;
 
     void Start()
     {
         _optionPanel.SetActive(false);
         _helpPanel.SetActive(false);
         _areYouSurePanel.SetActive(false);
+        if(PlayerPrefs.GetInt("HowToPlayOpen") != 1){
+            _helpPanel.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            _hud.GetComponent<HudController>().SetMainMenuFlag(true);
+        }
     }
 
     public void OnOptionClick(){
@@ -32,6 +39,7 @@ public class MenuPanel : MonoBehaviour
     }
 
     public void OnQuitClick(){
+        PlayerPrefs.SetInt("HowToPlayOpen", 0);
         _areYouSurePanel.SetActive(false);
         _areYouSurePanel.GetComponent<AreYouSure>().SetQuit(true);
     }

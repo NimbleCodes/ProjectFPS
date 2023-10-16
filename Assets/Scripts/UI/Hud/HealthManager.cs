@@ -53,7 +53,7 @@ public class HealthManager : MonoBehaviour
         if(gameObject.CompareTag("Player")){
             _player.GetComponent<Movement>().enabled = false;
             _cam.GetComponent<CameraFlow>().enabled = false;
-            EventManager.events.SetGameOver(true);
+            EventManager.events.Invoke_GameOverEvent();
         }
     }
 }
